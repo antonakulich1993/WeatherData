@@ -12,39 +12,40 @@ import CloudKit
 
 class MapVC: UIViewController {
     
+    let spinner = UIActivityIndicatorView(style: .large)
+    let watchHistoryButton = UIButton(type: .system)
+    let deleteAllButton = UIButton(type: .system)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GMSServices.provideAPIKey("AIzaSyAS6qgX2yi3HcDVg_Um0ScpBP4wkp3R5pM")
-        configureInterface()
-    }
-    
-    private func configureInterface() {
         let camera = GMSCameraPosition.camera(withLatitude: 53.893009, longitude: 27.567444, zoom: 5.0)
         let mapView = GMSMapView.map(withFrame: view.frame, camera: camera)
         view.addSubview(mapView)
-        
-        let spinner = UIActivityIndicatorView(style: .large)
+        mapView.delegate = self
+        configureInterface()
+    }
+    
+    func configureInterface() {
         spinner.isHidden = true
         view.addSubview(spinner)
         spinner.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
         }
-        
-        let watchHistoryButton = UIButton(type: .system)
         watchHistoryButton.setTitle("Watch history", for: .normal)
-        watchHistoryButton.setTitleColor(.systemBlue, for: .normal)
+        watchHistoryButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        watchHistoryButton.setTitleColor(.blue, for: .normal)
+        watchHistoryButton.addTarget(self, action: #selector(watchHistoryTapAction), for: .touchUpInside)
         view.addSubview(watchHistoryButton)
         watchHistoryButton.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(16)
             make.top.equalToSuperview().inset(50)
         }
-        
-       
-        
-        let deleteAllButton = UIButton(type: .system)
         deleteAllButton.setTitle("Delete All", for: .normal)
-        deleteAllButton.setTitleColor(UIColor.systemBlue, for: .normal)
+        deleteAllButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        deleteAllButton.setTitleColor(.red, for: .normal)
+        deleteAllButton.addTarget(self, action: #selector(deleteAllTapAction), for: .touchUpInside)
         view.addSubview(deleteAllButton)
         deleteAllButton.snp.makeConstraints { make in
             make.left.equalToSuperview().inset(16)
@@ -52,31 +53,32 @@ class MapVC: UIViewController {
         }
     }
     
-    func MakeUrlResponse() {
-        let session = URLSession.shared
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather") else { return }
-        let task = session.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print("Error")
-            }
-            do {
-                if  let repsonse = response {
-                    print("your response\(response)")
-                }
-            }
-        }
+    @objc func watchHistoryTapAction() {
+        
     }
     
-    //extension MapVC: GMSMapViewDelegate {
-    //    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-    //        spinner.startAnimating()
-    //        NetworkManager.shared.getWeather(lat: coordinate.latitude, lon: coordinate.longitude) { weather in
-    //            RealmManager.shared.save(weather: weather)
-    //            self.spinner.stopAnimating()
-    //        } failureBlock: {
-    //            self.spinner.stopAnimating()
-    //        }
-    //    }
+    @objc func deleteAllTapAction() {
+        
+    }
 }
 
-
+extension MapVC: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        guard let url = URL(string: "api.openweathermap.org/data/2.5/weather?\(coordinate.latitude)={lat}&\(coordinate.longitude)={lon}&appid={91d72de948c9a6cb82aa807ff6b87804}") else { return }
+        let session = URLSession.shared
+        session.dataTask(with: url) { data, response, error in
+            if let response = response {
+                print(response)
+            }
+            guard let data = data else { return }
+            print(data)
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+            } catch {
+                print(error)
+            }
+        }.resume()
+    }
+}

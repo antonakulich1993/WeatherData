@@ -1,20 +1,9 @@
 PODS:
-  - Alamofire (5.4.4)
   - GoogleMaps (5.1.0):
     - GoogleMaps/Maps (= 5.1.0)
   - GoogleMaps/Base (5.1.0)
   - GoogleMaps/Maps (5.1.0):
     - GoogleMaps/Base
-  - Moya (14.0.0):
-    - Moya/Core (= 14.0.0)
-  - Moya-ObjectMapper (2.9):
-    - Moya-ObjectMapper/Core (= 2.9)
-  - Moya-ObjectMapper/Core (2.9):
-    - Moya (~> 14.0.0-beta.6)
-    - ObjectMapper
-  - Moya/Core (14.0.0):
-    - Alamofire (~> 5.0)
-  - ObjectMapper (4.2.0)
   - Realm (10.17.0):
     - Realm/Headers (= 10.17.0)
   - Realm/Headers (10.17.0)
@@ -27,35 +16,25 @@ PODS:
 
 DEPENDENCIES:
   - GoogleMaps
-  - Moya
-  - Moya-ObjectMapper
   - RealmSwift
   - SDWebImage
   - SnapKit
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - GoogleMaps
-    - Moya
-    - Moya-ObjectMapper
-    - ObjectMapper
     - Realm
     - RealmSwift
     - SDWebImage
     - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   GoogleMaps: 086ae1dab659eaa7339bdb30fc88e2f44e7c597c
-  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  Moya-ObjectMapper: 967a99d9ea3aa9c93ddbe112aeca3667f53bfe93
-  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   Realm: 9533276bd76f66aa2fd0d3ffe700c1f6023dcab6
   RealmSwift: 57f5d59aa29852587aad1e861989e7af139894b5
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: e6c636ff38f0c64d0aa9c0a7c44c506c633da179
+PODFILE CHECKSUM: 51007fb0c8360fc0a83c032316d027a6b8d67497
 
 COCOAPODS: 1.11.2

@@ -8,7 +8,7 @@
 import UIKit
 
 class TableVC: UIViewController {
-    var weather: [WeatherSaveItem] = []
+    var weather: [String] = []
     
     let tableView = UITableView()
     

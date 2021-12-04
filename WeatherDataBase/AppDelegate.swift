@@ -9,12 +9,12 @@ import UIKit
 import GoogleMaps
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        GMSServices.provideAPIKey("AIzaSyAS6qgX2yi3HcDVg_Um0ScpBP4wkp3R5pM")
+        window = UIWindow()
+        window?.rootViewController = MapVC()
+        window?.makeKeyAndVisible()
         return true
     }
 

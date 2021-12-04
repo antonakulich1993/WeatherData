@@ -8,7 +8,6 @@ target 'WeatherDataBase' do
   # Pods for WeatherDataBase
   pod 'GoogleMaps'
  pod 'RealmSwift'
- pod 'Moya'
- pod 'Moya-ObjectMapper'
  pod 'SDWebImage'
+ pod 'SnapKit' 
 end

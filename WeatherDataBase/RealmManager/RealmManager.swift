@@ -1,9 +1,9 @@
-//
+
 //  RealmManager.swift
 //  WeatherDataBase
 //
 //  Created by MacBook on 18.10.21.
-//
+
 
 import Foundation
 import RealmSwift
@@ -12,7 +12,7 @@ class RealmManager  {
     private let realm = try! Realm()
     static let shared = RealmManager()
     private init() {}
-    
+
     func read() -> [WeatherSaveItem] {
         return Array(realm.objects(WeatherSaveItem.self))
     }

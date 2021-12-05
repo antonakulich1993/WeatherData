@@ -20,7 +20,12 @@ class WeatherSaveItem: Object {
     @objc dynamic var country = ""
     
     convenience init(weather: Weather) {
-        self.init()
+        self .init()
+        self.city = weather.city
+        self.country = weather.country
+        self.weatherDesc = weather.description
+        self.icon = weather.iconName
+        self.main = weather.main
     }
 }
 

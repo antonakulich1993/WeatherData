@@ -12,9 +12,12 @@ import CloudKit
 
 class MapVC: UIViewController {
     
+    var dataTask : URLSessionDataTask?
+    var weather: Weather?
     let spinner = UIActivityIndicatorView(style: .large)
     let watchHistoryButton = UIButton(type: .system)
     let deleteAllButton = UIButton(type: .system)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,5 +67,41 @@ class MapVC: UIViewController {
 
 extension MapVC: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        let API_KEY = "91d72de948c9a6cb82aa807ff6b87804"
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&appid=\(API_KEY)") else {
+            return
+        }
+        dataTask?.cancel()
+        dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else { return }
+            if let decodedData = try? JSONDecoder().decode(APIResponse.self, from: data) {
+                DispatchQueue.main.async {
+                    self.weather = decodedData
+                }
+            }
+        }
+        dataTask?.resume()
+    }
+    
+    struct APIResponse: Decodable {
+        let city: String
+        let country: String
+        let main: APIMain
+        let pressuer: Int
+        let weather: [APIWeather]
+    }
+    
+    struct APIMain: Decodable {
+        let temp: Double
+    }
+    
+    struct APIWeather: Decodable {
+        let description: String
+        let iconName: String
+    
+        enum CodingKeys: String, CodingKey {
+            case description
+            case iconName = "main"
         }
     }
+}

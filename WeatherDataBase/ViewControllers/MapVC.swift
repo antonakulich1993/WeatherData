@@ -53,32 +53,16 @@ class MapVC: UIViewController {
         }
     }
     
-    @objc func watchHistoryTapAction() {
+    @objc func watchHistoryTapAction(sedner: UIButton!) {
         
     }
     
-    @objc func deleteAllTapAction() {
+    @objc func deleteAllTapAction(sender: UIButton!) {
         
     }
 }
 
 extension MapVC: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        guard let url = URL(string: "api.openweathermap.org/data/2.5/weather?\(coordinate.latitude)={lat}&\(coordinate.longitude)={lon}&appid={91d72de948c9a6cb82aa807ff6b87804}") else { return }
-        let session = URLSession.shared
-        session.dataTask(with: url) { data, response, error in
-            if let response = response {
-                print(response)
-            }
-            guard let data = data else { return }
-            print(data)
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
-            } catch {
-                print(error)
-            }
-        }.resume()
+        }
     }
-}

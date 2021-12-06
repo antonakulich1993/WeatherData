@@ -14,6 +14,7 @@ class WeatherCell: UITableViewCell {
     var countryLabel = UILabel()
     var temperatureLabel = UILabel()
     var descriptionLabel = UILabel()
+    var pressureLabel = UILabel()
     var backView = UIView()
     var stackView = UIStackView()
     let weatherImage = UIImage()
@@ -55,6 +56,7 @@ class WeatherCell: UITableViewCell {
         stackView.addSubview(countryLabel)
         stackView.addSubview(temperatureLabel)
         stackView.addSubview(descriptionLabel)
+        stackView.addSubview(pressureLabel)
     }
 }
     

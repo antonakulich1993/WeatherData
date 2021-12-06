@@ -57,11 +57,12 @@ class MapVC: UIViewController {
     }
     
     @objc func watchHistoryTapAction(sedner: UIButton!) {
-        
+        let tableVC = TableVC(nibName: String(describing: TableVC.self), bundle: nil)
+        navigationController?.pushViewController(tableVC, animated: true)
     }
     
     @objc func deleteAllTapAction(sender: UIButton!) {
-        
+        RealmManager.shared.eraseAll()
     }
 }
 

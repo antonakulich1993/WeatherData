@@ -16,7 +16,7 @@ class RealmManager  {
     func read() -> [WeatherSaveItem] {
         return Array(realm.objects(WeatherSaveItem.self))
     }
-    func save(weather: Weather) {
+    func save(weather: WeatherData) {
         try? realm.write {
             realm.add(WeatherSaveItem(weather: weather))
         }

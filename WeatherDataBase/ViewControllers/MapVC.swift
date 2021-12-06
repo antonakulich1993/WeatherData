@@ -13,7 +13,7 @@ import CloudKit
 class MapVC: UIViewController {
     
     var dataTask : URLSessionDataTask?
-    var weather: Weather?
+    var weather: WeatherData?
     let spinner = UIActivityIndicatorView(style: .large)
     let watchHistoryButton = UIButton(type: .system)
     let deleteAllButton = UIButton(type: .system)
@@ -68,40 +68,26 @@ class MapVC: UIViewController {
 extension MapVC: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         let API_KEY = "91d72de948c9a6cb82aa807ff6b87804"
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&appid=\(API_KEY)") else {
-            return
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&appid=\(API_KEY)") else { return
         }
-        dataTask?.cancel()
-        dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else { return }
-            if let decodedData = try? JSONDecoder().decode(APIResponse.self, from: data) {
-                DispatchQueue.main.async {
-                    self.weather = decodedData
-                }
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Status code: \(httpResponse.statusCode)")
             }
-        }
-        dataTask?.resume()
-    }
-    
-    struct APIResponse: Decodable {
-        let city: String
-        let country: String
-        let main: APIMain
-        let pressuer: Int
-        let weather: [APIWeather]
-    }
-    
-    struct APIMain: Decodable {
-        let temp: Double
-    }
-    
-    struct APIWeather: Decodable {
-        let description: String
-        let iconName: String
-    
-        enum CodingKeys: String, CodingKey {
-            case description
-            case iconName = "main"
-        }
+            do {
+                if let data = data {
+                    let result = try JSONDecoder().decode(WeatherData.self, from: data)
+                    DispatchQueue.main.async {
+                        self.weather = result
+                        print(result)
+                    }
+                } else {
+                    print("No data")
+                }
+            }catch (let error) {
+                print("Error:\(error.localizedDescription)")
+            }
+        }.resume()
     }
 }
+

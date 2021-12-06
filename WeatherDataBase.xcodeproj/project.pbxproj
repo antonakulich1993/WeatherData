@@ -14,7 +14,6 @@
 		FAA44A5B271DD1A600BA4B0B /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A5A271DD1A600BA4B0B /* MapVC.swift */; };
 		FAA44A60271DD1A800BA4B0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA44A5F271DD1A800BA4B0B /* Assets.xcassets */; };
 		FAA44A63271DD1A800BA4B0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA44A61271DD1A800BA4B0B /* LaunchScreen.storyboard */; };
-		FAA44A6B271DD63C00BA4B0B /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A6A271DD63C00BA4B0B /* Weather.swift */; };
 		FAA44A77271DE42300BA4B0B /* WeatherSaveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A76271DE42300BA4B0B /* WeatherSaveItem.swift */; };
 		FAA44A79271DE65200BA4B0B /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A78271DE65200BA4B0B /* RealmManager.swift */; };
 		FAA44A7E271DE7FB00BA4B0B /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A7C271DE7FB00BA4B0B /* WeatherCell.swift */; };
@@ -34,7 +33,6 @@
 		FAA44A5F271DD1A800BA4B0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAA44A62271DD1A800BA4B0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAA44A64271DD1A800BA4B0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAA44A6A271DD63C00BA4B0B /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		FAA44A76271DE42300BA4B0B /* WeatherSaveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSaveItem.swift; sourceTree = "<group>"; };
 		FAA44A78271DE65200BA4B0B /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		FAA44A7C271DE7FB00BA4B0B /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				FAA44A76271DE42300BA4B0B /* WeatherSaveItem.swift */,
-				FAA44A6A271DD63C00BA4B0B /* Weather.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,7 +283,6 @@
 				FA5C2CE5275C0CB9005CC0F0 /* WeatherService.swift in Sources */,
 				FAA44A7E271DE7FB00BA4B0B /* WeatherCell.swift in Sources */,
 				FAA44A81271DEB2400BA4B0B /* TableVC.swift in Sources */,
-				FAA44A6B271DD63C00BA4B0B /* Weather.swift in Sources */,
 				FAA44A5B271DD1A600BA4B0B /* MapVC.swift in Sources */,
 				FAA44A57271DD1A600BA4B0B /* AppDelegate.swift in Sources */,
 				FAA44A59271DD1A600BA4B0B /* SceneDelegate.swift in Sources */,

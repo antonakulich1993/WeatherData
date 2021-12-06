@@ -26,6 +26,7 @@ struct WeatherData: Decodable {
     let weather: [Weather]
     let temp: Double
     let pressure: Int
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.city = try values.decode(String.self, forKey: CodingKeys.city)

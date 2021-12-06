@@ -59,6 +59,7 @@ class MapVC: UIViewController {
     @objc func watchHistoryTapAction(sedner: UIButton!) {
         let tableVC = TableVC(nibName: String(describing: TableVC.self), bundle: nil)
         navigationController?.pushViewController(tableVC, animated: true)
+        
     }
     
     @objc func deleteAllTapAction(sender: UIButton!) {
@@ -80,6 +81,7 @@ extension MapVC: GMSMapViewDelegate {
                     let result = try JSONDecoder().decode(WeatherData.self, from: data)
                     DispatchQueue.main.async {
                         self.weather = result
+                        RealmManager.shared.save(weather: result)
                         print(result)
                     }
                 } else {

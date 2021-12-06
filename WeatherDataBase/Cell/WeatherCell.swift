@@ -58,6 +58,15 @@ class WeatherCell: UITableViewCell {
         stackView.addSubview(descriptionLabel)
         stackView.addSubview(pressureLabel)
     }
+    
+    func setupCell(weather: WeatherSaveItem) {
+        cityLabel.text = ("Населенный пункт: \(weather.city)")
+        countryLabel.text = ("Страна: \(weather.country)")
+        temperatureLabel.text = ("Температура: \(weather.temp)")
+        descriptionLabel.text = ("\(weather.description)")
+        pressureLabel.text = ("\(weather.pressure)")
+        
+    }
 }
     
 private func countryFlag(country:String) -> String {

@@ -11,18 +11,21 @@ import RealmSwift
 
 
 class WeatherSaveItem: Object {
-    @objc dynamic var temp = ""
+    @objc dynamic var temp = 0.0
     @objc dynamic var pressure = 0
     @objc dynamic var icon = ""
     @objc dynamic var weatherDesc = ""
     @objc dynamic var main = ""
     @objc dynamic var country = ""
+    @objc dynamic var city = ""
     
     convenience init(weather: WeatherData) {
         self.init()
         self.country = weather.country
         self.weatherDesc = weather.weather.first?.description ?? ""
-        //self.temp = weather.temp
+        self.temp = weather.temp
+        self.city = weather.city
+        self.icon = weather.weather.first?.icon ?? ""
     }
 }
 

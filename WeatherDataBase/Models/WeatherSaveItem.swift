@@ -15,7 +15,6 @@ class WeatherSaveItem: Object {
     @objc dynamic var pressure = 0
     @objc dynamic var icon = ""
     @objc dynamic var weatherDesc = ""
-    @objc dynamic var main = ""
     @objc dynamic var country = ""
     @objc dynamic var city = ""
     

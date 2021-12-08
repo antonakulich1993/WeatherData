@@ -15,8 +15,6 @@ class WeatherCell: UITableViewCell {
     var temperatureLabel = UILabel()
     var descriptionLabel = UILabel()
     var pressureLabel = UILabel()
-    var backView = UIView()
-    var stackView = UIStackView()
     let weatherImage = UIImage()
     
     override func awakeFromNib() {
@@ -25,38 +23,37 @@ class WeatherCell: UITableViewCell {
     }
         
     func configureCell() {
-        contentView.addSubview(backView)
-        backView.snp.makeConstraints { make in
-            make.top.equalTo(contentView).inset(0)
-            make.bottom.equalTo(contentView).inset(0)
-            make.left.equalTo(contentView).inset(0)
-            make.right.equalTo(contentView).inset(0)
+        contentView.addSubview(cityLabel)
+        cityLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(10)
+            make.left.equalToSuperview().inset(16)
+            
         }
-        
-       
-        let myImageView:UIImageView = UIImageView()
-        myImageView.image = weatherImage
-        backView.addSubview(myImageView)
-        myImageView.snp.makeConstraints { make in
-            make.right.equalTo(backView).inset(5)
-            make.height.equalTo(70)
-            make.width.equalTo(70)
-            make.left.equalTo(stackView).inset(10)
-            make.centerY.equalTo(countryLabel)
+        contentView.addSubview(countryLabel)
+        cityLabel.snp.makeConstraints { make in
+            make.top.equalTo(cityLabel).inset(10)
+            make.left.equalToSuperview().inset(16)
+            
         }
-        
-        backView.addSubview(stackView)
-        stackView.snp.makeConstraints { make in
-            make.top.equalTo(backView).inset(5)
-            make.bottom.equalTo(backView).inset(5)
-            make.right.equalTo(backView).inset(5)
-            make.left.equalTo(backView).inset(5)
+        contentView.addSubview(temperatureLabel)
+        cityLabel.snp.makeConstraints { make in
+            make.top.equalTo(countryLabel).inset(10)
+            make.left.equalToSuperview().inset(16)
+            
         }
-        stackView.addSubview(cityLabel)
-        stackView.addSubview(countryLabel)
-        stackView.addSubview(temperatureLabel)
-        stackView.addSubview(descriptionLabel)
-        stackView.addSubview(pressureLabel)
+        contentView.addSubview(descriptionLabel)
+        cityLabel.snp.makeConstraints { make in
+            make.top.equalTo(temperatureLabel).inset(10)
+            make.left.equalToSuperview().inset(16)
+            
+        }
+        contentView.addSubview(pressureLabel)
+        cityLabel.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel).inset(10)
+            make.left.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview().inset(5)
+            
+        }
     }
     
     func setupCell(weather: WeatherSaveItem) {
@@ -65,11 +62,13 @@ class WeatherCell: UITableViewCell {
         temperatureLabel.text = ("Температура: \(weather.temp)")
         descriptionLabel.text = ("\(weather.description)")
         pressureLabel.text = ("\(weather.pressure)")
+        guard let url = URL(string: "http://openweathermap.org/img/wn/\(weather.icon)@2x.png") else { return }
+        weatherImage.sd_setImage(with: url)
         
     }
 }
     
-private func countryFlag(country:String) -> String {
+private func countryFlag(country: String) -> String {
     let base : UInt32 = 127397
     var flag = ""
     for v in country.unicodeScalars {

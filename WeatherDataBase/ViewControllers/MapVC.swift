@@ -12,7 +12,6 @@ import CloudKit
 
 class MapVC: UIViewController {
     var dataTask : URLSessionDataTask?
-    var weather: WeatherData?
     let spinner = UIActivityIndicatorView(style: .large)
     let googleMap = GMSMapView(frame: .null)
     
@@ -29,7 +28,7 @@ class MapVC: UIViewController {
     }
     
     func configureInterface() {
-
+        
         view.snp.makeConstraints { make in
             make.topMargin.equalToSuperview()
             make.right.equalToSuperview().inset(0)
@@ -63,6 +62,8 @@ class MapVC: UIViewController {
 
 extension MapVC: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        self.spinner.isHidden = false
+        self.spinner.startAnimating()
         let API_KEY = "91d72de948c9a6cb82aa807ff6b87804"
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&appid=\(API_KEY)") else { return
         }
@@ -74,8 +75,8 @@ extension MapVC: GMSMapViewDelegate {
                 if let data = data {
                     let result = try JSONDecoder().decode(WeatherData.self, from: data)
                     DispatchQueue.main.async {
-                        self.weather = result
                         RealmManager.shared.save(weather: result)
+                        self.spinner.stopAnimating()
                         print(result)
                     }
                 } else {

@@ -12,28 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-//        guard let windowScene = (scene as? UIWindowScene) else { return }
-//              let window = UIWindow(windowScene: windowScene)
-//              let controllerMap = UINavigationController(rootViewController: MapVC(nibName: String(describing: MapVC.self))
-//              window.rootViewController = controllerMap
-//              self.window = window
-//              window.makeKeyAndVisible()
         guard let windowScene = (scene as? UIWindowScene) else { return }
-<<<<<<< HEAD
         let controller = UINavigationController(rootViewController: MapVC())
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = controller
-=======
-        window = UIWindow(windowScene: windowScene)
-        let navigationViewController = UINavigationController(rootViewController: MapVC())
-        window?.rootViewController = navigationViewController
->>>>>>> Snapkit
         window?.makeKeyAndVisible()
     }
-//    let controller = UINavigationController(rootViewController: LoginVC(nibName: String(describing: LoginVC.self), bundle: nil))
-//    window = UIWindow(windowScene: windowScene)
-//    window?.rootViewController = controller
-//    window?.makeKeyAndVisible()
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

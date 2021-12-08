@@ -17,6 +17,7 @@ class WeatherSaveItem: Object {
     @objc dynamic var weatherDesc = ""
     @objc dynamic var country = ""
     @objc dynamic var city = ""
+    @objc dynamic var createdAt: Date = Date()
     
     convenience init(weather: WeatherData) {
         self.init()

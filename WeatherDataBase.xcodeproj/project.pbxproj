@@ -10,15 +10,14 @@
 		9960590C63366811425A098C /* Pods_WeatherDataBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E11B12D30436FCE62D0ABB /* Pods_WeatherDataBase.framework */; };
 		FA5C2CE5275C0CB9005CC0F0 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5C2CE4275C0CB9005CC0F0 /* WeatherService.swift */; };
 		FAA44A57271DD1A600BA4B0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A56271DD1A600BA4B0B /* AppDelegate.swift */; };
-		FAA44A59271DD1A600BA4B0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A58271DD1A600BA4B0B /* SceneDelegate.swift */; };
-		FAA44A5B271DD1A600BA4B0B /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A5A271DD1A600BA4B0B /* MapVC.swift */; };
+		FAA44A5B271DD1A600BA4B0B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A5A271DD1A600BA4B0B /* MapViewController.swift */; };
 		FAA44A60271DD1A800BA4B0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAA44A5F271DD1A800BA4B0B /* Assets.xcassets */; };
 		FAA44A63271DD1A800BA4B0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA44A61271DD1A800BA4B0B /* LaunchScreen.storyboard */; };
 		FAA44A77271DE42300BA4B0B /* WeatherSaveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A76271DE42300BA4B0B /* WeatherSaveItem.swift */; };
 		FAA44A79271DE65200BA4B0B /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A78271DE65200BA4B0B /* RealmManager.swift */; };
 		FAA44A7E271DE7FB00BA4B0B /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A7C271DE7FB00BA4B0B /* WeatherCell.swift */; };
 		FAA44A7F271DE7FB00BA4B0B /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA44A7D271DE7FB00BA4B0B /* WeatherCell.xib */; };
-		FAA44A81271DEB2400BA4B0B /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A80271DEB2400BA4B0B /* TableVC.swift */; };
+		FAA44A81271DEB2400BA4B0B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A80271DEB2400BA4B0B /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +27,7 @@
 		FA5C2CE4275C0CB9005CC0F0 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		FAA44A53271DD1A600BA4B0B /* WeatherDataBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherDataBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA44A56271DD1A600BA4B0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FAA44A58271DD1A600BA4B0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FAA44A5A271DD1A600BA4B0B /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		FAA44A5A271DD1A600BA4B0B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FAA44A5F271DD1A800BA4B0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAA44A62271DD1A800BA4B0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAA44A64271DD1A800BA4B0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,7 +35,7 @@
 		FAA44A78271DE65200BA4B0B /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		FAA44A7C271DE7FB00BA4B0B /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		FAA44A7D271DE7FB00BA4B0B /* WeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
-		FAA44A80271DEB2400BA4B0B /* TableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
+		FAA44A80271DEB2400BA4B0B /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +67,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FA5C2D182760BFD2005CC0F0 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				FA5C2D1A2760BFEC005CC0F0 /* Model */,
+				FA5C2D192760BFDB005CC0F0 /* Manager */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		FA5C2D192760BFDB005CC0F0 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FAA44A78271DE65200BA4B0B /* RealmManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		FA5C2D1A2760BFEC005CC0F0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAA44A76271DE42300BA4B0B /* WeatherSaveItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FAA44A4A271DD1A600BA4B0B = {
 			isa = PBXGroup;
 			children = (
@@ -92,11 +115,9 @@
 			children = (
 				FAA44A82271DEB5900BA4B0B /* ViewControllers */,
 				FAA44A7B271DE7E700BA4B0B /* Cell */,
-				FAA44A7A271DE65800BA4B0B /* RealmManager */,
-				FAA44A73271DDA7F00BA4B0B /* Network */,
-				FAA44A72271DD80500BA4B0B /* Models */,
+				FAA44A7A271DE65800BA4B0B /* Networking */,
 				FAA44A56271DD1A600BA4B0B /* AppDelegate.swift */,
-				FAA44A58271DD1A600BA4B0B /* SceneDelegate.swift */,
+				FA5C2D182760BFD2005CC0F0 /* Realm */,
 				FAA44A5F271DD1A800BA4B0B /* Assets.xcassets */,
 				FAA44A61271DD1A800BA4B0B /* LaunchScreen.storyboard */,
 				FAA44A64271DD1A800BA4B0B /* Info.plist */,
@@ -107,25 +128,17 @@
 		FAA44A72271DD80500BA4B0B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FAA44A76271DE42300BA4B0B /* WeatherSaveItem.swift */,
+				FA5C2CE4275C0CB9005CC0F0 /* WeatherService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		FAA44A73271DDA7F00BA4B0B /* Network */ = {
+		FAA44A7A271DE65800BA4B0B /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				FA5C2CE4275C0CB9005CC0F0 /* WeatherService.swift */,
+				FAA44A72271DD80500BA4B0B /* Models */,
 			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		FAA44A7A271DE65800BA4B0B /* RealmManager */ = {
-			isa = PBXGroup;
-			children = (
-				FAA44A78271DE65200BA4B0B /* RealmManager.swift */,
-			);
-			path = RealmManager;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		FAA44A7B271DE7E700BA4B0B /* Cell */ = {
@@ -140,8 +153,8 @@
 		FAA44A82271DEB5900BA4B0B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				FAA44A80271DEB2400BA4B0B /* TableVC.swift */,
-				FAA44A5A271DD1A600BA4B0B /* MapVC.swift */,
+				FAA44A80271DEB2400BA4B0B /* TableViewController.swift */,
+				FAA44A5A271DD1A600BA4B0B /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -282,10 +295,9 @@
 				FAA44A79271DE65200BA4B0B /* RealmManager.swift in Sources */,
 				FA5C2CE5275C0CB9005CC0F0 /* WeatherService.swift in Sources */,
 				FAA44A7E271DE7FB00BA4B0B /* WeatherCell.swift in Sources */,
-				FAA44A81271DEB2400BA4B0B /* TableVC.swift in Sources */,
-				FAA44A5B271DD1A600BA4B0B /* MapVC.swift in Sources */,
+				FAA44A81271DEB2400BA4B0B /* TableViewController.swift in Sources */,
+				FAA44A5B271DD1A600BA4B0B /* MapViewController.swift in Sources */,
 				FAA44A57271DD1A600BA4B0B /* AppDelegate.swift in Sources */,
-				FAA44A59271DD1A600BA4B0B /* SceneDelegate.swift in Sources */,
 				FAA44A77271DE42300BA4B0B /* WeatherSaveItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

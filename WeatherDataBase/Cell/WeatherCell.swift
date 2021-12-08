@@ -19,41 +19,6 @@ class WeatherCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureCell()
-    }
-        
-    func configureCell() {
-        contentView.addSubview(cityLabel)
-        cityLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(10)
-            make.left.equalToSuperview().inset(16)
-            
-        }
-        contentView.addSubview(countryLabel)
-        cityLabel.snp.makeConstraints { make in
-            make.top.equalTo(cityLabel).inset(10)
-            make.left.equalToSuperview().inset(16)
-            
-        }
-        contentView.addSubview(temperatureLabel)
-        cityLabel.snp.makeConstraints { make in
-            make.top.equalTo(countryLabel).inset(10)
-            make.left.equalToSuperview().inset(16)
-            
-        }
-        contentView.addSubview(descriptionLabel)
-        cityLabel.snp.makeConstraints { make in
-            make.top.equalTo(temperatureLabel).inset(10)
-            make.left.equalToSuperview().inset(16)
-            
-        }
-        contentView.addSubview(pressureLabel)
-        cityLabel.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel).inset(10)
-            make.left.equalToSuperview().inset(16)
-            make.bottom.equalToSuperview().inset(5)
-            
-        }
     }
     
     func setupCell(weather: WeatherSaveItem) {
@@ -62,9 +27,6 @@ class WeatherCell: UITableViewCell {
         temperatureLabel.text = ("Температура: \(weather.temp)")
         descriptionLabel.text = ("\(weather.description)")
         pressureLabel.text = ("\(weather.pressure)")
-        guard let url = URL(string: "http://openweathermap.org/img/wn/\(weather.icon)@2x.png") else { return }
-        weatherImage.sd_setImage(with: url)
-        
     }
 }
     

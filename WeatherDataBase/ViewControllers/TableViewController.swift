@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class TableVC: UIViewController {
+class TableViewController: UIViewController {
     
     var weather: [WeatherSaveItem] = []
     let tableView = UITableView()
@@ -33,7 +34,7 @@ class TableVC: UIViewController {
         }
     }
 }
-extension TableVC: UITableViewDataSource {
+extension TableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weather.count
     }
@@ -46,7 +47,7 @@ extension TableVC: UITableViewDataSource {
         return weatherCell
     }
 }
-extension TableVC {
+extension TableViewController {
     func registerCell(cells: [AnyClass]) {
         for cell in cells {
             let nib = UINib(nibName: String(describing: cell.self), bundle: nil)

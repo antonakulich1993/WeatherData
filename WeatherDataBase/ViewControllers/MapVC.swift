@@ -15,54 +15,43 @@ class MapVC: UIViewController {
     var dataTask : URLSessionDataTask?
     var weather: WeatherData?
     let spinner = UIActivityIndicatorView(style: .large)
-    let watchHistoryButton = UIButton(type: .system)
-    let deleteAllButton = UIButton(type: .system)
+    let googleMap = GMSMapView(frame: .null)
+    let deleteAllNavBarItem = UIBarButtonItem(title: "Delete All", style: .plain, target: self, action: #selector(deleteAllTapAction))
+    let watchHistoryNavBarItem = UIBarButtonItem(title: "Watch History", style: .plain, target: self, action: #selector(watchHistoryTapAction))
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        GMSServices.provideAPIKey("AIzaSyAS6qgX2yi3HcDVg_Um0ScpBP4wkp3R5pM")
-        let camera = GMSCameraPosition.camera(withLatitude: 53.893009, longitude: 27.567444, zoom: 5.0)
-        let mapView = GMSMapView.map(withFrame: view.frame, camera: camera)
-        view.addSubview(mapView)
-        mapView.delegate = self
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         configureInterface()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        googleMap.delegate = self
+    }
+    
     func configureInterface() {
+        view.addSubview(googleMap)
+        googleMap.snp.makeConstraints { make in
+            make.top.equalTo(view.snp_topMargin)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
         spinner.isHidden = true
         view.addSubview(spinner)
         spinner.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
         }
-        watchHistoryButton.setTitle("Watch history", for: .normal)
-        watchHistoryButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        watchHistoryButton.setTitleColor(.blue, for: .normal)
-        watchHistoryButton.addTarget(self, action: #selector(watchHistoryTapAction), for: .touchUpInside)
-        view.addSubview(watchHistoryButton)
-        watchHistoryButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().inset(16)
-            make.top.equalToSuperview().inset(50)
-        }
-        deleteAllButton.setTitle("Delete All", for: .normal)
-        deleteAllButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        deleteAllButton.setTitleColor(.red, for: .normal)
-        deleteAllButton.addTarget(self, action: #selector(deleteAllTapAction), for: .touchUpInside)
-        view.addSubview(deleteAllButton)
-        deleteAllButton.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(16)
-            make.top.equalToSuperview().inset(50)
-        }
+        navigationItem.leftBarButtonItem = deleteAllNavBarItem
+        navigationItem.rightBarButtonItem = watchHistoryNavBarItem
     }
     
-    @objc func watchHistoryTapAction(sedner: UIButton!) {
-        let tableVC = TableVC(nibName: String(describing: TableVC.self), bundle: nil)
+    @objc func watchHistoryTapAction() {
+        let tableVC = TableVC()
         navigationController?.pushViewController(tableVC, animated: true)
         
     }
     
-    @objc func deleteAllTapAction(sender: UIButton!) {
+    @objc func deleteAllTapAction() {
         RealmManager.shared.eraseAll()
     }
 }

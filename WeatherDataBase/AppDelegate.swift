@@ -12,10 +12,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        GMSServices.provideAPIKey("AIzaSyAS6qgX2yi3HcDVg_Um0ScpBP4wkp3R5pM")
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let navigationVC = UINavigationController()
-        let mainview = MapVC(nibName: nil, bundle: nil)
-        navigationVC.viewControllers = [mainview]
+        navigationVC.viewControllers = [MapVC()]
         self.window!.rootViewController = navigationVC
         window?.makeKeyAndVisible()
         return true

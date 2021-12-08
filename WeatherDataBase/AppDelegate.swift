@@ -15,7 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyAS6qgX2yi3HcDVg_Um0ScpBP4wkp3R5pM")
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let navigationVC = UINavigationController()
+<<<<<<< HEAD
         navigationVC.viewControllers = [MapVC(nibName: nil, bundle: nil)]
+=======
+        navigationVC.viewControllers = [MapVC()]
+>>>>>>> Snapkit
         self.window!.rootViewController = navigationVC
         window?.makeKeyAndVisible()
         return true

@@ -15,6 +15,16 @@ class MapVC: UIViewController {
     var weather: WeatherData?
     let spinner = UIActivityIndicatorView(style: .large)
     let googleMap = GMSMapView(frame: .null)
+<<<<<<< HEAD
+=======
+    let deleteAllNavBarItem = UIBarButtonItem(title: "Delete All", style: .plain, target: self, action: #selector(deleteAllTapAction))
+    let watchHistoryNavBarItem = UIBarButtonItem(title: "Watch History", style: .plain, target: self, action: #selector(watchHistoryTapAction))
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureInterface()
+    }
+>>>>>>> Snapkit
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -22,12 +32,16 @@ class MapVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Delete all history", style: .plain, target: self, action: #selector(deleteAllTapAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Watch History", style: .plain, target: self, action: #selector(watchHistoryTapAction))
+=======
+>>>>>>> Snapkit
         googleMap.delegate = self
     }
     
     func configureInterface() {
+<<<<<<< HEAD
         view.snp.makeConstraints { make in
             make.topMargin.equalToSuperview()
             make.right.equalToSuperview().inset(0)
@@ -35,18 +49,28 @@ class MapVC: UIViewController {
             make.bottom.equalToSuperview().inset(0)
         }
         
+=======
+>>>>>>> Snapkit
         view.addSubview(googleMap)
         googleMap.snp.makeConstraints { make in
             make.top.equalTo(view.snp_topMargin)
             make.leading.trailing.bottom.equalToSuperview()
         }
+<<<<<<< HEAD
         
+=======
+>>>>>>> Snapkit
         spinner.isHidden = true
         view.addSubview(spinner)
         spinner.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
         }
+<<<<<<< HEAD
+=======
+        navigationItem.leftBarButtonItem = deleteAllNavBarItem
+        navigationItem.rightBarButtonItem = watchHistoryNavBarItem
+>>>>>>> Snapkit
     }
     
     @objc func watchHistoryTapAction() {

@@ -10,12 +10,14 @@ import SDWebImage
 import SnapKit
 
 class WeatherCell: UITableViewCell {
-    var cityLabel = UILabel()
-    var countryLabel = UILabel()
-    var temperatureLabel = UILabel()
-    var descriptionLabel = UILabel()
-    var pressureLabel = UILabel()
-    let weatherImage = UIImage()
+  
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var pressureLabel: UILabel!
+    @IBOutlet weak var weatherImage: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -68,15 +68,12 @@ extension MapViewController: GMSMapViewDelegate {
                 print("Status code: \(httpResponse.statusCode)")
             }
             do {
-                if let data = data {
+                guard let data = data else { return }
                     let result = try JSONDecoder().decode(WeatherData.self, from: data)
                     DispatchQueue.main.async {
                         RealmManager.shared.save(weather: result)
                         self.spinner.stopAnimating()
                         print(result)
-                    }
-                } else {
-                    print("No data")
                 }
             }catch (let error) {
                 print("Error:\(error.localizedDescription)")

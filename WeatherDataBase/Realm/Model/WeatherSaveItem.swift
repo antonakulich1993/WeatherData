@@ -26,6 +26,7 @@ class WeatherSaveItem: Object {
         self.temp = weather.temp
         self.city = weather.city
         self.icon = weather.weather.first?.icon ?? ""
+        self.pressure = weather.pressure
     }
 }
 

@@ -27,8 +27,9 @@ class WeatherCell: UITableViewCell {
         cityLabel.text = ("Населенный пункт: \(weather.city)")
         countryLabel.text = ("Страна: \(weather.country)")
         temperatureLabel.text = ("Температура: \(weather.temp)")
-        descriptionLabel.text = ("\(weather.description)")
+        descriptionLabel.text = ("\(weather.weatherDesc)")
         pressureLabel.text = ("\(weather.pressure)")
+        
     }
 }
     

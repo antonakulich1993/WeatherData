@@ -10,30 +10,28 @@ import GoogleMaps
 import SnapKit
 
 class MapViewController: UIViewController {
-    
-    var spinner: UIActivityIndicatorView {
+    let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
         spinner.color = .black
         spinner.hidesWhenStopped = true
-        spinner.startAnimating()
+        spinner.stopAnimating()
         return spinner
-    }
+    }()
     let googleMap = GMSMapView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        configureInterface()
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureInterface()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Delete all history",
-                                                           style: .plain, target: self,
+                                                           style: .plain,
+                                                           target: self,
                                                            action: #selector(deleteAllTapAction))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Watch History",
-                                                            style: .plain, target: self,
+                                                            style: .plain,
+                                                            target: self,
                                                             action: #selector(watchHistoryTapAction))
         googleMap.delegate = self
+        
     }
     
     func configureInterface() {

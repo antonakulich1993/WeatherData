@@ -8,6 +8,7 @@
 import UIKit
 import GoogleMaps
 import SnapKit
+import Foundation
 
 class MapViewController: UIViewController {
     let spinner: UIActivityIndicatorView = {
@@ -61,8 +62,16 @@ extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         spinner.startAnimating()
         let API_KEY = "91d72de948c9a6cb82aa807ff6b87804"
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinate.latitude)&lon=\(coordinate.longitude)&appid=\(API_KEY)") else { return
-        }
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "api.openweathermap.org"
+        components.path = "/data/2.5/weather"
+        components.queryItems = [
+            URLQueryItem(name: "lat", value: "\(coordinate.latitude)"),
+            URLQueryItem(name: "lon", value: "\(coordinate.longitude)"),
+            URLQueryItem(name: "appid", value: "\(API_KEY)")
+        ]
+        guard let url = components.url else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let httpResponse = response as? HTTPURLResponse {
                 print("Status code: \(httpResponse.statusCode)")

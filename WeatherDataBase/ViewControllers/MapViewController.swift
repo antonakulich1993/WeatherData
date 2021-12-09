@@ -73,8 +73,8 @@ extension MapViewController: GMSMapViewDelegate {
         ]
         guard let url = components.url else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
-            if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
-                print("Status code: \(httpResponse.statusCode)")
+            guard let httpResnose = response as? HTTPURLResponse, httpResnose.statusCode == 200 else {
+                return print("Error status code is not 200!")
             }
             do {
                 guard let data = data else { return }

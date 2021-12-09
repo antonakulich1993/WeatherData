@@ -41,7 +41,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l1f-Lq-t0j">
-                        <rect key="frame" x="345" y="29.5" width="100" height="100"/>
+                        <rect key="frame" x="345" y="52" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="mls-Ba-BeH"/>
                             <constraint firstAttribute="width" constant="100" id="vLz-VI-oah"/>
@@ -60,9 +60,9 @@
                     <constraint firstItem="ODr-Ts-idx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="BF2-Cn-dhO"/>
                     <constraint firstItem="sVm-tj-78J" firstAttribute="firstBaseline" secondItem="O9B-je-Svr" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="G8l-PR-rE6"/>
                     <constraint firstItem="Vva-8Q-K4B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="JES-Tw-4Cd"/>
-                    <constraint firstItem="l1f-Lq-t0j" firstAttribute="centerY" secondItem="sVm-tj-78J" secondAttribute="centerY" id="MRk-bE-wlX"/>
+                    <constraint firstAttribute="bottom" secondItem="l1f-Lq-t0j" secondAttribute="bottom" constant="3" id="PN0-0c-Zou"/>
+                    <constraint firstItem="ReK-w0-XxJ" firstAttribute="top" secondItem="l1f-Lq-t0j" secondAttribute="bottom" constant="-58.5" id="SqE-rB-uml"/>
                     <constraint firstItem="ReK-w0-XxJ" firstAttribute="firstBaseline" secondItem="sVm-tj-78J" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="a0m-L6-sDT"/>
-                    <constraint firstAttribute="bottom" secondItem="l1f-Lq-t0j" secondAttribute="bottom" constant="25.5" id="aQv-Wd-8ud"/>
                     <constraint firstAttribute="trailing" secondItem="l1f-Lq-t0j" secondAttribute="trailing" constant="5" id="lBH-XM-grU"/>
                     <constraint firstItem="O9B-je-Svr" firstAttribute="firstBaseline" secondItem="ODr-Ts-idx" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="pow-9d-qDe"/>
                     <constraint firstItem="Vva-8Q-K4B" firstAttribute="firstBaseline" secondItem="ReK-w0-XxJ" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="puf-Ht-Ufg"/>

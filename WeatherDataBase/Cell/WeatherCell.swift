@@ -25,14 +25,15 @@ class WeatherCell: UITableViewCell {
     
     func setupCell(weather: WeatherSaveItem) {
         cityLabel.text = ("Населенный пункт: \(weather.city)")
-        countryLabel.text = ("Страна: \(weather.country)")
+        countryLabel.text = ("Страна: \(weather.country)\(countryFlag(country: weather.country))")
         temperatureLabel.text = ("Температура: \(weather.temp)")
         descriptionLabel.text = ("\(weather.weatherDesc)")
         pressureLabel.text = ("\(weather.pressure)")
+        guard let url = URL(string: "http://openweathermap.org/img/wn/\(weather.icon)@2x.png") else { return }
+        weatherImage.sd_setImage(with: url)
         
     }
 }
-    
 private func countryFlag(country: String) -> String {
     let base : UInt32 = 127397
     var flag = ""

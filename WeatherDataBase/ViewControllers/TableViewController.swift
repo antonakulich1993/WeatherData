@@ -12,13 +12,14 @@ class TableViewController: UIViewController {
     
     var weather: [WeatherSaveItem] = []
     let tableView = UITableView()
-    
+
     override func viewDidLoad() {
            super.viewDidLoad()
         setupTableView()
         weather = RealmManager.shared.read().reversed()
         registerCell(cells: [WeatherCell.self])
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.reloadData()
         
     }
@@ -26,12 +27,6 @@ class TableViewController: UIViewController {
     func setupTableView() {
         tableView.frame = view.bounds
         view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(0)
-            make.left.equalToSuperview().inset(0)
-            make.right.equalToSuperview().inset(0)
-            make.bottom.equalToSuperview().inset(0)
-        }
     }
 }
 extension TableViewController: UITableViewDataSource {
@@ -45,6 +40,13 @@ extension TableViewController: UITableViewDataSource {
         guard let weatherCell = cell as? WeatherCell else { return cell }
         weatherCell.setupCell(weather: weather[indexPath.row])
         return weatherCell
+    }
+}
+
+extension TableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.selectionStyle = .none
     }
 }
 extension TableViewController {

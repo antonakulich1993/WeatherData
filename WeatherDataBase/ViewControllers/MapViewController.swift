@@ -9,6 +9,7 @@ import UIKit
 import GoogleMaps
 import SnapKit
 import Foundation
+import RealmSwift
 
 class MapViewController: UIViewController {
     let spinner: UIActivityIndicatorView = {
@@ -19,7 +20,7 @@ class MapViewController: UIViewController {
         return spinner
     }()
     let googleMap = GMSMapView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureInterface()
@@ -73,16 +74,19 @@ extension MapViewController: GMSMapViewDelegate {
         ]
         guard let url = components.url else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let httpResnose = response as? HTTPURLResponse, httpResnose.statusCode == 200 else {
-                return print("Error status code is not 200!")
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200   {
+                print("Success status code: \(httpResponse.statusCode)")
+            }
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200  {
+                print("Invalid reponse: \(httpResponse.statusCode)")
             }
             do {
                 guard let data = data else { return }
-                    let result = try JSONDecoder().decode(WeatherData.self, from: data)
-                    DispatchQueue.main.async {
-                        RealmManager.shared.save(weather: result)
-                        self.spinner.stopAnimating()
-                        print(result)
+                let result = try JSONDecoder().decode(WeatherData.self, from: data)
+                DispatchQueue.main.async {
+                    RealmManager.shared.save(weather: result)
+                    self.spinner.stopAnimating()
+                    print(result)
                 }
             }catch (let error) {
                 print("Error:\(error.localizedDescription)")

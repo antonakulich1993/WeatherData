@@ -70,7 +70,10 @@ extension MapViewController: GMSMapViewDelegate {
         components.queryItems = [
             URLQueryItem(name: "lat", value: "\(coordinate.latitude)"),
             URLQueryItem(name: "lon", value: "\(coordinate.longitude)"),
-            URLQueryItem(name: "appid", value: "\(API_KEY)")
+            URLQueryItem(name: "appid", value: "\(API_KEY)"),
+            URLQueryItem(name: "units", value: "metric"),
+            URLQueryItem(name: "lang", value: "ru")
+            
         ]
         guard let url = components.url else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in

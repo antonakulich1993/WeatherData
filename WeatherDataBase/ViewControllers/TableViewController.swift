@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import SwiftUI
 
 class TableViewController: UIViewController {
     
@@ -20,8 +19,8 @@ class TableViewController: UIViewController {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 100
         tableView.register(UINib(nibName: String(describing: WeatherCell.self), bundle: nil), forCellReuseIdentifier: String(describing: WeatherCell.self))
+        tableView.estimatedRowHeight = 100
         return tableView
     }()
     
@@ -44,5 +43,9 @@ extension TableViewController: UITableViewDataSource, UITableViewDelegate {
         weatherCell.setupCell(weather: weather[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.selectionStyle = .none
+    }
 }
-

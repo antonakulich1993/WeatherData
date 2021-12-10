@@ -27,8 +27,8 @@ class WeatherCell: UITableViewCell {
         cityLabel.text = ("Населенный пункт: \(weather.city)")
         countryLabel.text = ("Страна: \(weather.country)\(countryFlag(country: weather.country))")
         temperatureLabel.text = ("Температура: \(weather.temp)")
-        descriptionLabel.text = ("\(weather.weatherDesc)")
-        pressureLabel.text = ("\(weather.pressure)")
+        descriptionLabel.text = ("Облака: \(weather.weatherDesc)")
+        pressureLabel.text = ("Давление: \(weather.pressure)")
         guard let url = URL(string: "http://openweathermap.org/img/wn/\(weather.icon)@2x.png") else { return }
         weatherImage.sd_setImage(with: url)
         

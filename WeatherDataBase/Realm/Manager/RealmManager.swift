@@ -14,7 +14,9 @@ class RealmManager  {
     private init() {}
 
     func read() -> [WeatherSaveItem] {
-        return Array(realm.objects(WeatherSaveItem.self))
+        return Array(realm.objects(WeatherSaveItem.self).sorted(by: { WeatherSaveItem1, WeatherSaveItem2 -> Bool in
+            return WeatherSaveItem1.createdAt > WeatherSaveItem2.createdAt
+        }))
     }
     func save(weather: WeatherData) {
         try? realm.write {

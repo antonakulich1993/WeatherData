@@ -10,51 +10,44 @@ import SnapKit
 
 class TableViewController: UIViewController {
     
-    var weather: [WeatherSaveItem] = []
-    let tableView = UITableView()
-
-    override func viewDidLoad() {
-           super.viewDidLoad()
-        setupTableView()
-        weather = RealmManager.shared.read().reversed()
-        registerCell(cells: [WeatherCell.self])
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.reloadData()
-        
-    }
+    let cellIDIdentifier = "WeatherCell"
     
-    func setupTableView() {
+    lazy var weather: [WeatherSaveItem] = {
+        weather = RealmManager.shared.read()
+        return weather
+    }()
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIDIdentifier)
+        tableView.estimatedRowHeight = 100
+        return tableView
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         tableView.frame = view.bounds
         view.addSubview(tableView)
     }
 }
-extension TableViewController: UITableViewDataSource {
+
+
+extension TableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weather.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath)
-        tableView.register(UINib(nibName: "WeatherCell", bundle: nil), forCellReuseIdentifier: "CellFromNib")
-        guard let weatherCell = cell as? WeatherCell else { return cell }
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIDIdentifier, for: indexPath)
+        guard let weatherCell = cell as? WeatherCell else { return cell}
         weatherCell.setupCell(weather: weather[indexPath.row])
-        return weatherCell
+        return cell
     }
-}
-
-extension TableViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.selectionStyle = .none
-    }
-}
-extension TableViewController {
-    func registerCell(cells: [AnyClass]) {
-        for cell in cells {
-            let nib = UINib(nibName: String(describing: cell.self), bundle: nil)
-            tableView.register(nib, forCellReuseIdentifier: String(describing: cell.self))
-        }
-        
     }
 }

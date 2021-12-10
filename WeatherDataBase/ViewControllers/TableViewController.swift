@@ -26,8 +26,10 @@ class TableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.frame = view.bounds
         view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.bottom.left.right.equalToSuperview()
+        }
     }
 }
 

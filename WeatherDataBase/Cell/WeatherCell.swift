@@ -26,7 +26,7 @@ class WeatherCell: UITableViewCell {
     
     func setupCell(weather: WeatherSaveItem) {
         cityLabel.text = ("Населенный пункт: \(weather.city)")
-        countryLabel.text = ("Страна: \(weather.country)\(countryFlag(country: weather.country))")
+        countryLabel.text = ("Страна: \(weather.country)\(weather.country.countryFlag(country:String(weather.country)))")
         temperatureLabel.text = ("Температура: \(weather.temp)")
         descriptionLabel.text = ("\(weather.weatherDesc)")
         pressureLabel.text = ("Давление: \(weather.pressure)")
@@ -35,12 +35,5 @@ class WeatherCell: UITableViewCell {
         
     }
 }
-private func countryFlag(country: String) -> String {
-    let base : UInt32 = 127397
-    var flag = ""
-    for v in country.unicodeScalars {
-        flag.unicodeScalars.append(UnicodeScalar(base + v.value)!)
-    }
-    return String(flag)
-}
+
 

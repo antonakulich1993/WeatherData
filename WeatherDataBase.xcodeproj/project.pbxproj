@@ -18,6 +18,7 @@
 		FAA44A7E271DE7FB00BA4B0B /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A7C271DE7FB00BA4B0B /* WeatherCell.swift */; };
 		FAA44A7F271DE7FB00BA4B0B /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA44A7D271DE7FB00BA4B0B /* WeatherCell.xib */; };
 		FAA44A81271DEB2400BA4B0B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA44A80271DEB2400BA4B0B /* TableViewController.swift */; };
+		FADACCC62766743000DC77F1 /* FlagEmojiExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADACCC52766743000DC77F1 /* FlagEmojiExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		FAA44A7C271DE7FB00BA4B0B /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		FAA44A7D271DE7FB00BA4B0B /* WeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
 		FAA44A80271DEB2400BA4B0B /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		FADACCC52766743000DC77F1 /* FlagEmojiExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagEmojiExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,10 +155,27 @@
 		FAA44A82271DEB5900BA4B0B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FADACCC32766740D00DC77F1 /* Extensions */,
 				FAA44A80271DEB2400BA4B0B /* TableViewController.swift */,
 				FAA44A5A271DD1A600BA4B0B /* MapViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FADACCC32766740D00DC77F1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FADACCC42766741900DC77F1 /* StringExtensions */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FADACCC42766741900DC77F1 /* StringExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				FADACCC52766743000DC77F1 /* FlagEmojiExtension.swift */,
+			);
+			path = StringExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FADACCC62766743000DC77F1 /* FlagEmojiExtension.swift in Sources */,
 				FAA44A79271DE65200BA4B0B /* RealmManager.swift in Sources */,
 				FA5C2CE5275C0CB9005CC0F0 /* WeatherService.swift in Sources */,
 				FAA44A7E271DE7FB00BA4B0B /* WeatherCell.swift in Sources */,

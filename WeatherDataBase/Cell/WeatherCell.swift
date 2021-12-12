@@ -17,9 +17,11 @@ class WeatherCell: UITableViewCell {
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var weatherImage: UIImageView!
     
+    static let identifier: String = "WeatherCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
     }
     
     func setupCell(weather: WeatherSaveItem) {

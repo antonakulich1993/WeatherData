@@ -73,15 +73,15 @@ extension MapViewController: GMSMapViewDelegate {
             URLQueryItem(name: "appid", value: "\(API_KEY)"),
             URLQueryItem(name: "units", value: "metric"),
             URLQueryItem(name: "lang", value: "ru")
-            
+
         ]
         guard let url = components.url else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200   {
-                print("Success status code: \(httpResponse.statusCode)")
+            guard let httpResponse = response as? HTTPURLResponse else {
+                return print("Error")
             }
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200  {
-                print("Invalid reponse: \(httpResponse.statusCode)")
+            guard httpResponse.statusCode == 200 else {
+                return print("Error: \(httpResponse.statusCode)")
             }
             do {
                 guard let data = data else { return }
@@ -97,4 +97,3 @@ extension MapViewController: GMSMapViewDelegate {
         }.resume()
     }
 }
-

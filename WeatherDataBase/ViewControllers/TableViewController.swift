@@ -10,11 +10,8 @@ import SnapKit
 
 class TableViewController: UIViewController {
     
-    lazy var weather: [WeatherSaveItem] = {
-        weather = RealmManager.shared.read()
-        return weather
-    }()
-    
+    var weather: [WeatherSaveItem] = RealmManager.shared.read()
+      
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -39,10 +36,8 @@ extension TableViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WeatherCell.self), for: indexPath)
-        cell.selectionStyle = .none
-        guard let weatherCell = cell as? WeatherCell else { return cell}
-        weatherCell.setupCell(weather: weather[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WeatherCell.identifier, for: indexPath) as? WeatherCell else { return UITableViewCell() }
+        cell.setupCell(weather: weather[indexPath.row])
         return cell
     }
 }

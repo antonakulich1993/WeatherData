@@ -5,6 +5,7 @@
 //  Created by MacBook on 4.12.21.
 //
 
+
 struct WeatherData: Decodable {
     enum CodingKeys: String, CodingKey {
         case city = "name"

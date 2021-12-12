@@ -15,7 +15,7 @@ class TableViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
-        tableView.register(UINib(nibName: String(describing: WeatherCell.self), bundle: nil), forCellReuseIdentifier: String(describing: WeatherCell.self))
+        tableView.register(UINib(nibName: String(describing: WeatherCell.self), bundle: nil), forCellReuseIdentifier: WeatherCell.identifier)
         tableView.estimatedRowHeight = 100
         return tableView
     }()

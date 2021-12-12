@@ -8,10 +8,10 @@
 import Foundation
 
 extension String {
-     func countryFlag(country: String) -> String {
+     func countryFlag() -> String {
         let base : UInt32 = 127397
         var flag = ""
-        for v in country.unicodeScalars {
+        for v in unicodeScalars {
             flag.unicodeScalars.append(UnicodeScalar(base + v.value)!)
         }
         return String(flag)

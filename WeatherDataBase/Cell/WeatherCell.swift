@@ -26,7 +26,7 @@ class WeatherCell: UITableViewCell {
     
     func setupCell(weather: WeatherSaveItem) {
         cityLabel.text = ("Населенный пункт: \(weather.city)")
-        countryLabel.text = ("Страна: \(weather.country)\(weather.country.countryFlag(country:String(weather.country)))")
+        countryLabel.text = ("Страна: \(weather.country)\(weather.country.countryFlag())")
         temperatureLabel.text = ("Температура: \(weather.temp)")
         descriptionLabel.text = ("\(weather.weatherDesc)")
         pressureLabel.text = ("Давление: \(weather.pressure)")
